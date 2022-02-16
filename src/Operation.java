@@ -1,10 +1,58 @@
+import java.util.Scanner;
+
 public class Operation {
-    public static Book[] programmingBooks = new ProgrammingBook[5];
-    public static Book[] fictionBooks = new FictionBook[5];
+    public static Book[] listBooks = new Book[10];
 
     public static void main(String[] args) {
-        programmingBooks[0] = new ProgrammingBook("p1", "Basic Java", 10, "author1", "Java", "what");
-        programmingBooks[1] = new ProgrammingBook("p2", "Advanced Java", 11, "author2", "Java", "when");
-        programmingBooks[2] = new ProgrammingBook();
+        //  05 Programming Books
+        listBooks[0] = new ProgrammingBook("p1", "Basic Java", 10, "author1", "Java", "what");
+        listBooks[1] = new ProgrammingBook("p2", "Advanced Java", 11, "author2", "Java", "when");
+        listBooks[2] = new ProgrammingBook("p3", "Introduce to Java", 12, "author3", "Java", "why");
+        listBooks[3] = new ProgrammingBook("p4", "Introduce to PHP", 13, "author4", "PHP", "who");
+        listBooks[4] = new ProgrammingBook("p5", "Python", 14, "author5", "Python", "how");
+
+        //  05 Fiction Books
+        listBooks[5] = new FictionBook("f1", "Batman", 150, "author6", "Viễn tưởng 1");
+        listBooks[6] = new FictionBook("f2", "Superman", 160, "author7", "Viễn tưởng 1");
+        listBooks[7] = new FictionBook("f3", "Spider-man", 170, "author8", "Viễn tưởng 1");
+        listBooks[8] = new FictionBook("f4", "Ngu quai Sai Gon", 18, "Bui Chi Vinh", "Thiếu nhi");
+        listBooks[9] = new FictionBook("f5", "Viec lang", 19, "Ngo Tat To", "Phóng sự");
+
+        //  Tính tổng số tiền của 10 cuốn sách
+        int totalPrice = getTotalPrice(listBooks);
+        System.out.println("Tổng số tiền của 10 cuốn sách là: " + totalPrice);
+        //  Đếm số sách Programming Books có language là "Java"
+
+        //  Đếm số sách Fiction Books có category là "Viễn tưởng 1"
+
+        //  Đếm số sách Fiction Books có giá nhỏ hơn 100
+
+        //  Tìm kiếm giá của cuốn sách có tên được nhập vào từ bàn phím
+
     }
+
+    public static int getTotalPrice(Book[] books) {
+        int totalPrice = 0;
+        for (Book i : books
+        ) {
+            totalPrice += i.getPrice();
+        }
+        return totalPrice;
+    }
+
+    /*public static int countProgrammingBooksByLanguage() {
+
+    }
+
+    public static int countFictionBooksByCategory() {
+
+    }
+
+    public static int countFictionBooksByPrice() {
+
+    }
+
+    public static String searchBook() {
+
+    }*/
 }
