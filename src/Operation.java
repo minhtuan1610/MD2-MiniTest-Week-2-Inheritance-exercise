@@ -26,6 +26,8 @@ public class Operation {
         System.out.println("Số lượng sách Programming Books về ngôn ngữ Java là: " + numberOfBookByLanguage);
 
         //  Đếm số sách Fiction Books có category là "Viễn tưởng 1"
+        int numberOfBookByCategory = countFictionBooksByCategory(listBooks, "Viễn tưởng 1");
+        System.out.println("Số lượng sách Fiction Books thuộc thể loại 'Viễn tưởng 1' là: " + numberOfBookByCategory);
 
         //  Đếm số sách Fiction Books có giá nhỏ hơn 100
 
@@ -63,7 +65,9 @@ public class Operation {
         for (int i = 0; i < books.length; i++) {
             if (books[i] instanceof FictionBook) {
                 String categoryOfBook = ((FictionBook) books[i]).getCategory();
-
+                if (categoryOfBook.equals(requiredCategory)) {
+                    count++;
+                }
             }
         }
         return count;
