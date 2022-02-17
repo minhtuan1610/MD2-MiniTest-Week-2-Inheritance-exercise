@@ -22,6 +22,8 @@ public class Operation {
         int totalPrice = getTotalPrice(listBooks);
         System.out.println("Tổng số tiền của 10 cuốn sách là: " + totalPrice);
         //  Đếm số sách Programming Books có language là "Java"
+        int numberOfBookByLanguage = countProgrammingBooksByLanguage(listBooks, "Java");
+        System.out.println("Số lượng sách Programming Books về ngôn ngữ Java là: " + numberOfBookByLanguage);
 
         //  Đếm số sách Fiction Books có category là "Viễn tưởng 1"
 
@@ -31,6 +33,7 @@ public class Operation {
 
     }
 
+    //  Tính tổng số tiền của 10 cuốn sách
     public static int getTotalPrice(Book[] books) {
         int totalPrice = 0;
         for (Book i : books
@@ -40,19 +43,39 @@ public class Operation {
         return totalPrice;
     }
 
-    /*public static int countProgrammingBooksByLanguage() {
-
+    //  Đếm số sách Programming Books có language là "Java"
+    public static int countProgrammingBooksByLanguage(Book[] books, String requiredLanguage) {
+        int count = 0;
+        for (int i = 0; i < books.length; i++) {
+            if (books[i] instanceof ProgrammingBook) {
+                String languageOfBook = ((ProgrammingBook) books[i]).getLanguage();
+                if (languageOfBook.equals(requiredLanguage)) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
-    public static int countFictionBooksByCategory() {
+    //  Đếm số sách Fiction Books có category là "Viễn tưởng 1"
+    public static int countFictionBooksByCategory(Book[] books, String requiredCategory) {
+        int count = 0;
+        for (int i = 0; i < books.length; i++) {
+            if (books[i] instanceof FictionBook) {
+                String categoryOfBook = ((FictionBook) books[i]).getCategory();
 
+            }
+        }
+        return count;
     }
 
+    //  Đếm số sách Fiction Books có giá nhỏ hơn 100
     public static int countFictionBooksByPrice() {
-
+        return 0;
     }
 
+    //  Tìm kiếm giá của cuốn sách có tên được nhập vào từ bàn phím
     public static String searchBook() {
-
-    }*/
+        return null;
+    }
 }
