@@ -33,7 +33,10 @@ public class Operation {
         int numberOfBookByPrice = countFictionBooksByPrice(listBooks, 100);
         System.out.println("Số lượng sách Fiction Books có giá nhỏ hơn 100 là: " + numberOfBookByPrice);
         //  Tìm kiếm giá của cuốn sách có tên được nhập vào từ bàn phím
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập tên sách muốn tìm (không dấu):");
+        String inputBookName = scanner.nextLine();
+        checkBook(inputBookName);
     }
 
     //  Tính tổng số tiền của 10 cuốn sách
@@ -89,7 +92,29 @@ public class Operation {
     }
 
     //  Tìm kiếm giá của cuốn sách có tên được nhập vào từ bàn phím
-    public static String searchBook() {
-        return null;
+    public static int searchBook(Book[] books, String inputBookName) {
+        int index = -1;
+        for (int i = 0; i < books.length; i++) {
+            String bookName = books[i].getName();
+            if (inputBookName.equals(bookName)) {
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    public static double getPriceOfSelectionBook(Book[] books, int index) {
+        double bookPrice = books[index].getPrice();
+        return bookPrice;
+    }
+
+    public static void checkBook(String inputBookName) {
+        int indexOfBook = searchBook(listBooks, inputBookName);
+        if (indexOfBook >= 0) {
+            double bookPrice = getPriceOfSelectionBook(listBooks, indexOfBook);
+            System.out.printf("Giá của sách %s là: %.2f", inputBookName, bookPrice);
+        } else {
+            System.out.println("Không có sách cần tìm");
+        }
     }
 }
