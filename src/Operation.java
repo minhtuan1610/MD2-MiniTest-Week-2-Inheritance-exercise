@@ -30,7 +30,8 @@ public class Operation {
         System.out.println("Số lượng sách Fiction Books thuộc thể loại 'Viễn tưởng 1' là: " + numberOfBookByCategory);
 
         //  Đếm số sách Fiction Books có giá nhỏ hơn 100
-
+        double numberOfBookByPrice = countFictionBooksByPrice(listBooks, 100);
+        System.out.println("Số lượng sách Fiction Books có giá nhỏ hơn 100 là: " + numberOfBookByPrice);
         //  Tìm kiếm giá của cuốn sách có tên được nhập vào từ bàn phím
 
     }
@@ -74,8 +75,17 @@ public class Operation {
     }
 
     //  Đếm số sách Fiction Books có giá nhỏ hơn 100
-    public static int countFictionBooksByPrice() {
-        return 0;
+    public static int countFictionBooksByPrice(Book[] books, double requiredPrice) {
+        int count = 0;
+        for (int i = 0; i < books.length; i++) {
+            if (books[i] instanceof FictionBook) {
+                double priceOfBook = books[i].getPrice();
+                if (priceOfBook < requiredPrice) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
     //  Tìm kiếm giá của cuốn sách có tên được nhập vào từ bàn phím
